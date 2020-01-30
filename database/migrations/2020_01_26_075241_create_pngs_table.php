@@ -17,9 +17,9 @@ class CreatePngsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('request_id')->unique();
-            $table->char('color_code_hex', 10);
             $table->integer('height');
             $table->integer('width');
+            $table->char('color_code_hex', 10);
         });
     }
 
