@@ -14,9 +14,9 @@ class CreateRectanglesTable extends Migration
     public function up()
     {
         Schema::create('rectangle_entity', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('rectangle_id')->unique();
-            $table->string('Png_id');
+            $table->bigIncrements('id')->unique();
+            $table->string('rectangle_id');
+            $table->string('png_id');
             $table->integer('position_x');
             $table->integer('position_y');
             $table->integer('height');

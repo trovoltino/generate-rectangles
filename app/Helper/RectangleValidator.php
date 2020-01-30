@@ -7,15 +7,14 @@ namespace App\Helper;
  */
 class RectangleValidator
 {
-    const BAD_REQUEST = '400';
-
-    public function isInsideParentContainer ($parentContainer, $rectangle) {
-      
-      return $parentContainer['width'] > $rectangle->x + $rectangle->width &&
-      $parentContainer['height'] > $rectangle->y + $rectangle->height ? true : false;
+    public function isInsideParentContainer ($parentContainer, $rectangle)
+    {
+      return $parentContainer->width > $rectangle->x + $rectangle->width &&
+      $parentContainer->height > $rectangle->y + $rectangle->height ? true : false;
     }
 
-    public function hasPositiveNumbers ($rectangle) {
+    public function hasPositiveNumbers ($rectangle)
+    {
       foreach ($rectangle as $coordinate => $key) {
         if ($coordinate != 'id' && $coordinate != 'color') {
           if ((int) $key != $key || $key < 0) {
@@ -28,8 +27,8 @@ class RectangleValidator
       return true;
     }
 
-    public function areRectanglesOverlapping ($rectangleA, $rectangleB) {
-
+    public function areRectanglesOverlapping ($rectangleA, $rectangleB)
+    {
       // Checks if overlaps on X axis
       $xOverlap = $rectangleA->x > $rectangleB->x + $rectangleB->width || 
       $rectangleA->x + $rectangleA->width < $rectangleB->x ? true : false;
@@ -38,6 +37,6 @@ class RectangleValidator
       $yOverlap = $rectangleA->y > $rectangleB->y + $rectangleB->height || 
       $rectangleA->y + $rectangleA->height < $rectangleB->y ? true : false;
 
-      return $xOverlap && $yOverlap;
+      return $xOverlap || $yOverlap;
     } 
 }

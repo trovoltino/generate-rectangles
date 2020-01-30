@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('generate', 'RectanglesController');
+Route::get('png', 'PngController@show');

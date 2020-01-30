@@ -13,6 +13,6 @@ class Rectangle extends Model
     public $timestamps = false;
 
     public function png() {
-        return $this->belongsTo('App\Png');
+        return $this->belongsTo('App\Png', 'png_id', 'request_id'); 
     }
 }
