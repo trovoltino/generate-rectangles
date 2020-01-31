@@ -9,8 +9,10 @@ class RectangleValidator
 {
     public function isInsideParentContainer ($parentContainer, $rectangle)
     {
-      return $parentContainer->width > $rectangle->x + $rectangle->width &&
-      $parentContainer->height > $rectangle->y + $rectangle->height ? true : false;
+      $isCrossingXAxis = $parentContainer->width > $rectangle->x + $rectangle->width;
+      $isCrossingYAxis = $parentContainer->height > $rectangle->y + $rectangle->height;
+
+      return $isCrossingXAxis && $isCrossingYAxis;
     }
 
     public function hasPositiveNumbers ($rectangle)
@@ -31,11 +33,11 @@ class RectangleValidator
     {
       // Checks if overlaps on X axis
       $xOverlap = $rectangleA->x > $rectangleB->x + $rectangleB->width || 
-      $rectangleA->x + $rectangleA->width < $rectangleB->x ? true : false;
+      $rectangleA->x + $rectangleA->width < $rectangleB->x;
 
       // Checks if overlaps on Y axis
       $yOverlap = $rectangleA->y > $rectangleB->y + $rectangleB->height || 
-      $rectangleA->y + $rectangleA->height < $rectangleB->y ? true : false;
+      $rectangleA->y + $rectangleA->height < $rectangleB->y;
 
       return $xOverlap || $yOverlap;
     } 
